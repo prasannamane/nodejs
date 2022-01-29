@@ -1,19 +1,30 @@
 {
-  "name": "expressjs",
+  "name": "prasanna",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon server.js",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.2",
+    "mongoose": "^6.1.8",
     "underscore": "^1.12.1"
   },
   "devDependencies": {
+    "jshint": "^2.13.4",
     "nodemon": "^2.0.15"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prasannamane/nodejs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/prasannamane/nodejs/issues"
+  },
+  "homepage": "https://github.com/prasannamane/nodejs#readme"
 }

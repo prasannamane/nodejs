@@ -3,13 +3,7 @@ const userRoutes = require('./routes/UserRouter');
 const app = express();
 //npm run devStart
 
-app.get("/", (req, res) => {
-    console.log("hello");
-    res.send("Welcome to Node JS, I am Express JS");
-})
-
-app.use('/users', userRoutes);
-
+app.use('/', userRoutes);
 app.listen(3000);
 
 
