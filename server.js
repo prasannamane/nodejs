@@ -1,13 +1,18 @@
 const express = require("express");
 const userRoutes = require('./routes/UserRouter');
 const app = express();
-//npm run devStart
+
+app.use(express.json());
+app.use(express.urlencoded({extended:true})); //for url abc=abc&
+app.use(express.static('public'));
 
 app.use('/', userRoutes);
-app.listen(3000);
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Listening on port http://localhost:${port}...`));
 
 
-/*
+/* 1. 
 const http = require('http');
 const server = http.createServer((req, res) => {
     if(req.url === '/'){
@@ -22,4 +27,20 @@ const server = http.createServer((req, res) => {
 });
 server.listen(3000);
 console.log('started 3000');
+*/
+
+/* 2. 
+GET
+PUT
+POST
+DELETE
+*/
+
+/* 3. 
+-npm run devStart
+-sudo npm i -g nodemon
+-nodemon index.js
+-export PORT=5000
+-jshint server.js
+
 */
