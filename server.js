@@ -1,18 +1,39 @@
-const express = require("express");
+const startupDebug = require('debug')('app:startup');
+//const dbDebug = require('debug')('app:db');
+const config = require('config');
+const express = require('express');
 const userRoutes = require('./routes/UserRouter');
+const adminRoutes = require('./routes/AdminRouter');
 const app = express();
+const morgan = require('morgan');
 
+startupDebug('App Started');
 app.use(express.json());
-app.use(express.urlencoded({extended:true})); //for url abc=abc&
+app.use(express.urlencoded({ extended: true })); //for url abc=abc&
 app.use(express.static('public'));
 
-app.use('/', userRoutes);
+app.set('view engine', 'pug');
+app.set('views', './views');
+
+
+//console.log(config.get('name'));
+//console.log(config.get('mail_host'));
+//console.log(config.get('mail_password'));
+//console.log(config.get('mail_password'));
+
+if (app.get('env') == 'development') app.use(morgan('tiny'));
+
+app.get('/', (req, res) => { 
+    res.render('index', {title: 'App', message:'Welcome'});
+});
+app.use('/user', userRoutes);
+app.use('/admin', adminRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port http://localhost:${port}...`));
 
 
-/* 1. 
+/* 1.
 const http = require('http');
 const server = http.createServer((req, res) => {
     if(req.url === '/'){
@@ -29,18 +50,21 @@ server.listen(3000);
 console.log('started 3000');
 */
 
-/* 2. 
+/* 2.
 GET
 PUT
 POST
 DELETE
 */
 
-/* 3. 
+/* 3.
 -npm run devStart
 -sudo npm i -g nodemon
 -nodemon index.js
 -export PORT=5000
+-export NODE_ENV=production
 -jshint server.js
+-export DEBUG=app:*
+
 
 */
