@@ -15,17 +15,12 @@ app.use(express.static('public'));
 app.set('view engine', 'pug');
 app.set('views', './views');
 
-
-//console.log(config.get('name'));
-//console.log(config.get('mail_host'));
-//console.log(config.get('mail_password'));
-//console.log(config.get('mail_password'));
-
 if (app.get('env') == 'development') app.use(morgan('tiny'));
 
 app.get('/', (req, res) => { 
     res.render('index', {title: 'App', message:'Welcome'});
 });
+
 app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);
 
@@ -68,3 +63,8 @@ DELETE
 
 
 */
+
+//console.log(config.get('name'));
+//console.log(config.get('mail_host'));
+//console.log(config.get('mail_password'));
+//console.log(config.get('mail_password'));

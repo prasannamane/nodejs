@@ -21,3 +21,5 @@ class AdminController{
 exports.see = async (req, res, next) => {
     res.render('index', {title: 'Admin', message:'Welcome to admin'});
 };
+
+//module.exports = AdminController
