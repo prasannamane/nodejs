@@ -1,3 +1,4 @@
+
 class UserModels{
 
     insert(table, insert_data){

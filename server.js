@@ -7,6 +7,11 @@ const adminRoutes = require('./routes/AdminRouter');
 const app = express();
 const morgan = require('morgan');
 
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/subscriber')
+.then(() => console.log('Connected to MongoDB...'))
+.catch(err => console.error('Could not connect to MongoDB'))
+
 startupDebug('App Started');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); //for url abc=abc&
@@ -60,7 +65,7 @@ DELETE
 -export NODE_ENV=production
 -jshint server.js
 -export DEBUG=app:*
-
+-npm init --yes
 
 */
 
