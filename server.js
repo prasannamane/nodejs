@@ -1,4 +1,4 @@
-const startupDebug = require('debug')('app:startup');
+const startupDebug = require('debug')('app:startup'); 
 //const dbDebug = require('debug')('app:db');
 const config = require('config');
 const express = require('express');
@@ -58,6 +58,10 @@ DELETE
 */
 
 /* 3.
+-npm -i
+-npm install 
+-npm install --save common
+
 -npm run devStart
 -sudo npm i -g nodemon
 -nodemon index.js
@@ -66,7 +70,7 @@ DELETE
 -jshint server.js
 -export DEBUG=app:*
 -npm init --yes
-
+http://localhost:3000/user/subscribe/1
 */
 
 //console.log(config.get('name'));

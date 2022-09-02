@@ -1,36 +1,16 @@
 {
-  "name": "prasanna",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "nodejs",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "devStart": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node ./bin/www"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "common": "^0.2.5",
-    "config": "^3.3.7",
-    "debug": "^4.3.3",
-    "express": "^4.17.2",
-    "joi": "^13.1.0",
-    "mongoose": "^6.2.2",
-    "morgan": "^1.10.0",
-    "pug": "^3.0.2",
-    "underscore": "^1.12.1"
-  },
-  "devDependencies": {
-    "jshint": "^2.13.4",
-    "nodemon": "^2.0.15"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/prasannamane/nodejs.git"
-  },
-  "bugs": {
-    "url": "https://github.com/prasannamane/nodejs/issues"
-  },
-  "homepage": "https://github.com/prasannamane/nodejs#readme"
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "pug": "2.0.0-beta11"
+  }
 }
