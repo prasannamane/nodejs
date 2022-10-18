@@ -1,6 +1,6 @@
 const startupDebug = require('debug')('app:startup'); 
 //const dbDebug = require('debug')('app:db');
-const config = require('config');
+//const config = require('./config');
 const express = require('express');
 const userRoutes = require('./routes/UserRouter');
 const adminRoutes = require('./routes/AdminRouter');
@@ -15,7 +15,7 @@ mongoose.connect('mongodb://localhost/subscriber')
 startupDebug('App Started');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); //for url abc=abc&
-app.use(express.static('public'));
+app.use(express.static('public')); 
 
 app.set('view engine', 'pug');
 app.set('views', './views');
