@@ -21,8 +21,8 @@
     "pug": "^2.0.0-beta11"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20",
-    "jshint": "^2.13.4"
+    "jshint": "^2.13.4",
+    "nodemon": "^2.0.20"
   },
   "repository": {
     "type": "git",
