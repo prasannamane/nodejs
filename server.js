@@ -2,17 +2,12 @@ const startupDebug = require('debug')('app:startup');
 //const dbDebug = require('debug')('app:db');
 //const config = require('./config');
 const express = require('express');
+
+const setupRoutes = require('./routes/SetupRoutes');
 const userRoutes = require('./routes/UserRouter');
 const adminRoutes = require('./routes/AdminRouter');
 const app = express();
 const morgan = require('morgan');
-
-
-
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/subscriber')
-.then(() => console.log('Connected to MongoDB...'))
-.catch(err => console.error('Could not connect to MongoDB...', err))
 
 startupDebug('App Started');
 app.use(express.json());
@@ -28,6 +23,7 @@ app.get('/', (req, res) => {
     res.render('index', {title: 'App', message:'Welcome'});
 });
 
+app.use('/setup', setupRoutes)
 app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);
 
