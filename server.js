@@ -75,3 +75,27 @@ http://localhost:3000/user/subscribe/1
 //console.log(config.get('mail_host'));
 //console.log(config.get('mail_password'));
 //console.log(config.get('mail_password'));
+
+
+/*
+Node
+
+
+Verify that MongoDB has started successfully:
+ps aux | grep -v grep | grep mongod
+
+Check
+mongosh
+mongo
+mongod
+
+
+
+Set env MongoDB
+ mkdir $HOME/data; 
+mongod --dbpath $HOME/data
+
+
+brew install mongodb
+mongod --config /usr/local/etc/mongod.conf
+*/
