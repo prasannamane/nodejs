@@ -3,7 +3,6 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
 
-
 class SetupController {
 
     connection() {
@@ -38,9 +37,7 @@ exports.connection = async (req, res, next) => {
     const connection = await Setup.connection();
     const Subscribe = await Setup.creteModel();
     const creteSubscribe = await Setup.creteSubscribe(Subscribe);
-    console.log(Subscribe);
     const save = await creteSubscribe.save();
     const getSubscribe = await Setup.subscribe(Subscribe);
     res.status(200).send(getSubscribe);
-
 };

@@ -1,5 +1,4 @@
 const common = require('../models/CommonModel');
-console.log(common.connection);
 //console.log(common.connection);
 //const common = new CommonModel();
 //const UserModel = require('../models/UserModel');
@@ -9,7 +8,6 @@ const Joi = require('joi');
 class UserController {
 
     async subscribe(req, common) {
-        console.log(req.body.email);
             return new common({
                 name: 'Subscribe Chennel Now',
                 email: req.body.email,
