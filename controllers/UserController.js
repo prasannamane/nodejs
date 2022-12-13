@@ -6,7 +6,6 @@ const common = require('../models/CommonModel');
 const Joi = require('joi');
 
 class UserController {
-
     async subscribe(req, common) {
             return new common({
                 name: 'Subscribe Chennel Now',
@@ -15,59 +14,78 @@ class UserController {
                 tags: ['node', 'backend'], 
                 isPublished: true
             });
-       
     }
 
-    async inserttest() {
-        return 1;
+    async get_all(common) {
+        return common.find();
     }
 
-    update(table, update_data, condition) {
-        return true;
+    async subscribe_get(common) {
+        var mysort = { email: 1 };
+        
+        return common.find().sort(mysort).limit(1);
+    }
+
+    async get_id(req, common) { 
+        return common.find({ _id: req.params.id });
     }
     
-    see() {
-        return true;
+    async update(req, common){
+        return common.update({ _id: req.params.id },
+            {
+                $set: {
+                    email: req.body.email
+                }
+            });
     }
-
-    get() {
-        return true;
-    }
-
-    update() {
-        return true;
-    }
+    
 }
 User = new UserController();
 
 exports.subscribe = async (req, res, next) => {
     const validate = validateInput(req);
     if (validate.error) return res.status(400).send(validate.error);
-
     const subscribe = await User.subscribe(req, common.connection);
     const result = await subscribe.save();
+    const get = await User.subscribe_get(common.connection);
     if (result) {
-        res.status(200).send('Email added to be subscribe successfully.');
+        res.status(200).send(result);
     } else {
         res.status(404).send('Something went wrong.');
     }
 };
 
-exports.get = async (req, res, next) => {
-    var result = await User.inserttest();
-    if (result) {
-        res.status(200).send('It is True');
+exports.get_all = async (req, res, next) => {
+
+    const subscribe = await User.subscribe(req, common.connection);
+    const get_all = await User.get_all(common.connection);
+
+    if (get_all) {
+        res.status(200).send(get_all);
     } else {
-        res.status(404).send('It is False');
+        res.status(404).send('Something went wrong.');
     }
 };
 
-exports.put = async (req, res, next) => {
-    var result = await User.update();
-    if (result) {
-        res.status(200).send('It is True');
+exports.get_id = async (req, res, next) => {
+    const subscribe = await User.subscribe(req, common.connection);
+    const get_id = await User.get_id(req, common.connection);
+
+    if (get_id) {
+        res.status(200).send(get_id);
     } else {
-        res.status(404).send('It is False');
+        res.status(404).send('Something went wrong.');
+    }
+};
+
+
+exports.update = async (req, res, next) => {
+    const subscribe = await User.subscribe(req, common.connection);
+    const update = await User.update(req, common.connection);
+    if (update) {
+        res.status(200).send(update);
+    } else {
+        res.status(404).send('Something went wrong.');
     }
 };
 

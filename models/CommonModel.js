@@ -22,7 +22,7 @@ class CommonModel {
         });
     }
     subscribe(Subscribe) {
-        return Subscribe.find().limit(1);
+        return Subscribe.find();
     }
 }
 
