@@ -5,8 +5,9 @@ const router = express.Router();
 
 router.route('/').post(User.see);
 router.route('/subscribe').post(User.subscribe); 
-router.route('/subscribe/:id').post(User.get);  
-router.route('/subscribe/:id').put(User.put); 
-router.route('/subscribe/:id').delete(User.delete);  
+router.route('/subscribe/get/all').post(User.get_all); 
+router.route('/subscribe/get/:id').get(User.get_id);  
+router.route('/subscribe/update/:id').put(User.update); 
+router.route('/subscribe/delete/:id').delete(User.delete);  
 
-module.exports = router
+module.exports = router 
