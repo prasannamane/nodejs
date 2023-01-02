@@ -8,7 +8,7 @@ const Joi = require('joi');
 class UserController {
     async subscribe(req, common) {
             return new common({
-                name: 'Subscribe Chennel Now',
+                name: req.body.name, 
                 email: req.body.email,
                 author: 'Prasanna',
                 tags: ['node', 'backend'], 
@@ -37,6 +37,10 @@ class UserController {
                     email: req.body.email
                 }
             });
+    }
+
+    async delete(req, common){
+        return common.deleteOne({ _id: req.params.id });
     }
     
 }
@@ -90,11 +94,13 @@ exports.update = async (req, res, next) => {
 };
 
 exports.delete = async (req, res, next) => {
-    var result = await User.delete();
-    if (result) {
-        res.status(200).send('It is True');
+    const subscribe = await User.subscribe(req, common.connection);
+    const delete_ = await User.delete(req, common.connection);
+
+    if (delete_) {
+        res.status(200).send(delete_);
     } else {
-        res.status(404).send('It is False');
+        res.status(404).send('Something went wrong.');
     }
 };
 
@@ -105,7 +111,8 @@ exports.see = async (req, res, next) => {
 
 function validateInput(req) {
     const schema = {
-        email: Joi.string().min(5).required()
+        email: Joi.string().min(5).required(),
+        name: Joi.string(),
     }
     /* npm install joi@13.1.0
     */

@@ -27,9 +27,11 @@ app.use('/setup', setupRoutes)
 app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);
 
-const port = process.env.PORT || 8006;
+const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`Listening on port http://localhost:${port}...`));
 
+// Export the Express API
+module.exports = app
 
 /* 1.
 const http = require('http');

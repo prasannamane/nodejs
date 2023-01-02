@@ -31,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/prasannamane/nodejs/issues"
   },
-  "homepage": "https://github.com/prasannamane/nodejs#readme"
+  "homepage": "https://github.com/prasannamane/nodejs#readme",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
