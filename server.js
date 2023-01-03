@@ -27,7 +27,7 @@ app.use('/setup', setupRoutes)
 app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);
 
-const port = process.env.PORT || 8006;
+const port = process.env.PORT || 3001;
 app.listen(port, () => console.log(`Listening on port http://localhost:${port}...`));
 
 
