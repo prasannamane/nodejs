@@ -5,9 +5,10 @@ const router = express.Router();
 //const ObjAdminController = new AdminController();
 
 router.get('/', (req, res) => { 
-    res.render('index', {title: 'App', message:'Welcome'});
+    res.render('admin/login', {title: 'App', message:'Welcome'});
 });
 console.log('Loading route');
+//router.route('/see').get(AdminController.see);
 router.route('/see').get(AdminController.see);
 
 module.exports = router
