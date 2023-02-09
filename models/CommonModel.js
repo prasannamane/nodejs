@@ -34,4 +34,4 @@ class CommonModel {
 }
 
 Setup = new CommonModel();
-exports.connection = Setup.connection();
+ // exports.connection = Setup.connection();

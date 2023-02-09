@@ -3,7 +3,7 @@ const startupDebug = require('debug')('app:startup');
 //const config = require('./config');
 const express = require('express');
 
-const setupRoutes = require('./routes/SetupRoutes');
+//const setupRoutes = require('./routes/SetupRoutes');
 const userRoutes = require('./routes/UserRouter');
 const adminRoutes = require('./routes/AdminRouter');
 const app = express();
@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
     res.render('index', {title: 'App', message:'Welcome'});
 });
 
-app.use('/setup', setupRoutes)
+//app.use('/setup', setupRoutes)
 app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);
 
@@ -99,4 +99,6 @@ mongod --dbpath $HOME/data
 
 brew install mongodb
 mongod --config /usr/local/etc/mongod.conf
+
+
 */
