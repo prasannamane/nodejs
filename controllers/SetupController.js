@@ -32,6 +32,7 @@ class SetupController {
 }
 
 Setup = new SetupController();
+/*
 exports.connection = async (req, res, next) => {
 
     const connection = await Setup.connection();
@@ -41,3 +42,4 @@ exports.connection = async (req, res, next) => {
     const getSubscribe = await Setup.subscribe(Subscribe);
     res.status(200).send(getSubscribe);
 };
+*/

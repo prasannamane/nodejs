@@ -1,5 +1,7 @@
 //const UserModel = require('../models/UserModel');
 //const user = new UserModel();
+const AdminModel = require('../models/AdminModel');
+
 
 class AdminController{
 
@@ -12,14 +14,18 @@ class AdminController{
     update(table, update_data, condition){
         
     }
-    see(){
-        return true;
-        
+
+    async see(){
+        const ObjAdminModel = await new AdminModel();
+        return ObjAdminModel.see()
+       
     }
 }
 
-exports.see = async (req, res, next) => {
-    res.render('index', {title: 'Admin', message:'Welcome to admin'});
-};
+const ObjAdminController = new AdminController();
 
-//module.exports = AdminController
+exports.see = async (req, res, next) => {
+    mydata = await ObjAdminController.see();
+    console.log(mydata);
+    res.render('admin/index', {title: 'Admin', message:'Welcome to admin', data:mydata});
+};
