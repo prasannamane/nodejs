@@ -1,4 +1,5 @@
 const startupDebug = require('debug')('app:startup'); 
+const bodyParser = require('body-parser');
 //const dbDebug = require('debug')('app:db');
 //const config = require('./config');
 const express = require('express');
@@ -10,9 +11,11 @@ const app = express();
 const morgan = require('morgan');
 
 startupDebug('App Started');
-app.use(express.json());
-app.use(express.urlencoded({ extended: true })); //for url abc=abc&
-app.use(express.static('public')); 
+//app.use(express.json());
+//app.use(express.urlencoded({ extended: true })); //for url abc=abc&
+//app.use(express.static('public')); 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set('view engine', 'pug');
 app.set('views', './views');
@@ -28,7 +31,7 @@ app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);
 
 const port = process.env.PORT || 8006;
-app.listen(port, () => console.log(`Listening on port http://localhost:${port}...`));
+app.listen(port, () => console.log(`2. Listening on port http://localhost:${port}...`));
 
 
 /* 1.
@@ -99,6 +102,4 @@ mongod --dbpath $HOME/data
 
 brew install mongodb
 mongod --config /usr/local/etc/mongod.conf
-
-
 */
