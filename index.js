@@ -13,7 +13,7 @@ const morgan = require('morgan');
 startupDebug('App Started');
 //app.use(express.json());
 //app.use(express.urlencoded({ extended: true })); //for url abc=abc&
-//app.use(express.static('public')); 
+app.use(express.static('public')); 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
