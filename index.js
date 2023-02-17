@@ -1,34 +1,52 @@
-const startupDebug = require('debug')('app:startup'); 
+const startupDebug = require('debug')('app:startup');
+const bodyParser = require('body-parser');
 //const dbDebug = require('debug')('app:db');
 //const config = require('./config');
 const express = require('express');
+const session = require('express-session');
 
 //const setupRoutes = require('./routes/SetupRoutes');
 const userRoutes = require('./routes/UserRouter');
 const adminRoutes = require('./routes/AdminRouter');
 const app = express();
 const morgan = require('morgan');
+const flash = require('express-flash');
 
 startupDebug('App Started');
-app.use(express.json());
-app.use(express.urlencoded({ extended: true })); //for url abc=abc&
-app.use(express.static('public')); 
+
+app.use(session({
+    secret: 'abcd1234',
+    resave: false,
+    saveUninitialized: true
+}));
+
+app.use(flash());
+
+//app.use(express.json());
+//app.use(express.urlencoded({ extended: true })); //for url abc=abc&
+app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set('view engine', 'pug');
 app.set('views', './views');
 
+
+
 if (app.get('env') == 'development') app.use(morgan('tiny'));
 
-app.get('/', (req, res) => { 
-    res.render('index', {title: 'App', message:'Welcome'});
+app.get('/', (req, res) => {
+    res.render('index', { title: 'App', message: 'Welcome' });
 });
 
 //app.use('/setup', setupRoutes)
 app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);
 
+
+
 const port = process.env.PORT || 8006;
-app.listen(port, () => console.log(`Listening on port http://localhost:${port}...`));
+app.listen(port, () => console.log(`2. Listening on port http://localhost:${port}...`));
 
 
 /* 1.
@@ -57,7 +75,7 @@ DELETE
 
 /* 3.
 -npm -i
--npm install 
+-npm install
 -npm install --save common
 
 -npm run devStart
@@ -99,6 +117,4 @@ mongod --dbpath $HOME/data
 
 brew install mongodb
 mongod --config /usr/local/etc/mongod.conf
-
-
 */

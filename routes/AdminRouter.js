@@ -1,13 +1,21 @@
 const express = require('express');
-const app = express();
-const AdminController = require('../controllers/AdminController');
+const AdminController = require('../Controllers/AdminController');
 const router = express.Router();
-//const ObjAdminController = new AdminController();
 
 router.get('/', (req, res) => { 
-    res.render('index', {title: 'App', message:'Welcome'});
+    res.render('admin/login', {title: 'App', message:'Welcome'});
 });
-console.log('Loading route');
+console.log('1. Route');
+
 router.route('/see').get(AdminController.see);
 
-module.exports = router
+router.route('/login').post(AdminController.login);
+
+router.route('/dashboard').get(AdminController.dashboard);
+/*
+app.get('/dashboard', (req, res) => {
+    const message = req.flash('info')[0];
+    res.render('dashboard', { message: message });
+  });
+  */
+module.exports = router;
