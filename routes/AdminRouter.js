@@ -1,5 +1,5 @@
 const express = require('express');
-const AdminController = require('../controllers/AdminController');
+const AdminController = require('../Controllers/AdminController');
 const router = express.Router();
 
 router.get('/', (req, res) => { 
@@ -11,5 +11,11 @@ router.route('/see').get(AdminController.see);
 
 router.route('/login').post(AdminController.login);
 
-
-module.exports = router
+router.route('/dashboard').get(AdminController.dashboard);
+/*
+app.get('/dashboard', (req, res) => {
+    const message = req.flash('info')[0];
+    res.render('dashboard', { message: message });
+  });
+  */
+module.exports = router;

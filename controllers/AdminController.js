@@ -1,9 +1,24 @@
 //const UserModel = require('../models/UserModel');
 //const user = new UserModel();
-const AdminModel = require('../models/AdminModel');
+const ModelsAdminCommon = require('../Models/Admin/Common');
+const crypto = require('crypto');
 
 
 class AdminController {
+
+    constructor() {
+        this.ObjModelsAdminCommon = new ModelsAdminCommon();
+        this.table;
+    }
+
+    async retrieve(mobile, password)
+    {
+        const condition = [];
+        condition['mobile'] = mobile;
+        condition['password'] = password;
+        this.table = 'register';
+        return this.ObjModelsAdminCommon.retrieve(this.table, condition);
+    }
 
     login() {
         return true;
@@ -24,6 +39,8 @@ class AdminController {
         return ObjAdminModel.see()
 
     }
+
+
 }
 
 const ObjAdminController = new AdminController();
@@ -36,8 +53,27 @@ exports.see = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
     
-    console.log('Controller')
-    console.log(req.body);
-    res.send(req.body);
+    const mobile = req.body.mobile;
+    const password = crypto.createHash('sha1').update(req.body.password).digest('hex');
+    const retrieve = await ObjAdminController.retrieve(mobile, password);
+    console.log(retrieve);
+    console.log('Checkoing log');
+
+    if (retrieve == undefined) {
+        req.flash('info', 'You are now logged in.');
+        res.redirect('/admin');
+      } else {
+        req.session.name = retrieve[0].name;
+        req.session.id = retrieve[0].id;
+        req.flash('info', 'You are now logged in.');
+        res.redirect('/admin/dashboard');
+      }
     
+};
+
+exports.dashboard = async (req, res, next) => {
+    const message = req.flash('info')[0];
+    console.log(message);
+    res.render('admin/dashboard', { message: message });
+
 };

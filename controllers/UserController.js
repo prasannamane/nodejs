@@ -1,4 +1,4 @@
-const common = require('../models/CommonModel');
+const common = require('../Models/CommonModel');
 //console.log(common.connection);
 //const common = new CommonModel();
 //const UserModel = require('../models/UserModel');
