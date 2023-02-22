@@ -9,7 +9,7 @@ class Database {
             database: 'event',
             port: '8889'
         });
-        console.log('databse')
+        console.log('Databse Connection...')
     }
 
     query(sql, args) {
@@ -17,10 +17,10 @@ class Database {
         return new Promise((resolve, reject) => {
             this.connection.query(sql, args, (err, rows) => {
                 if (err) { 
-                    //console.log("Err "+ err);
+                    console.log("Err "+ err);
                     return reject(err); 
                 }else{
-                    //console.log(rows);
+                    console.log(rows);
                     resolve(rows);
                 } 
             });

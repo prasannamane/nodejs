@@ -6,8 +6,8 @@ const express = require('express');
 const session = require('express-session');
 
 //const setupRoutes = require('./routes/SetupRoutes');
-const userRoutes = require('./routes/UserRouter');
-const adminRoutes = require('./routes/AdminRouter');
+const userRoutes = require('./Routes/UserRouter');
+const routesAdmin = require('./Routes/Admin/Common');
 const app = express();
 const morgan = require('morgan');
 const flash = require('express-flash');
@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
 
 //app.use('/setup', setupRoutes)
 app.use('/user', userRoutes);
-app.use('/admin', adminRoutes);
+app.use('/admin', routesAdmin);
 
 
 

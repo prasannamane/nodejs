@@ -8,26 +8,31 @@ const sqlQuery = sql.Query(); //for dialect: sql.Query('postgresql')
 class Common {
 
     constructor() {
+        console.log('Calling db');
         this.ObjDatabase = new Database();
-        this.sqlSelect = sqlQuery.select();
+        this.sqlSelect;
         this.query;
     }
 
-    async retrieve(table, condition){
+    async retrieve(table, condition) {
+        this.sqlSelect = sqlQuery.select();
         try {
             this.query = this.sqlSelect.from(table).where(condition).build();
             return await this.ObjDatabase.query(this.query);
         } catch (error) {
             console.error("Second Error " + error);
-        } 
-
+        }
     }
 
-    insert(table, insert_data) {
-        run();
-        return true;
-        //user.insert(table, insert_data);
-
+    async insert(table, data) {
+        this.sqlSelect = sqlQuery.insert();
+        try {
+            console.log(data);
+            this.query = this.sqlSelect.into(table).set(data).build();
+            return await this.ObjDatabase.query(this.query);
+        } catch (error) {
+            console.error("Second Error " + error);
+        }
     }
 
     update(table, update_data, condition) {
@@ -38,8 +43,8 @@ class Common {
         console.log('Loading model');
         try {
             const ObjDatabase = await new Database();
-            
-            return await  ObjDatabase.query('SELECT * FROM `category`');
+
+            return await ObjDatabase.query('SELECT * FROM `category`');
             /*.then((result) => {
                 
                 //console.log(result);
@@ -56,10 +61,10 @@ class Common {
                 //console.error("First Error " + err);
               });*/
 
-              //console.log("Rows "+rows);
+            //console.log("Rows "+rows);
         } catch (error) {
             console.error("Second Error " + error);
-        } 
+        }
     }
 }
 
