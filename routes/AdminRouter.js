@@ -3,8 +3,22 @@ const AdminController = require('../Controllers/AdminController');
 const router = express.Router();
 
 router.get('/', (req, res) => { 
+    const message = req.flash('info')[0];
+    console.log(message);
+    res.render('admin/login', {title: 'App', message:message});
+    
+    
+});
+
+/*
+router.get('/', (req, res) => { 
+    const message = req.flash('info')[0];
+    console.log(message);
+    res.render('admin/dashboard', { message: message });
+    
     res.render('admin/login', {title: 'App', message:'Welcome'});
 });
+*/
 console.log('1. Route');
 
 router.route('/see').get(AdminController.see);

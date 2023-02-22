@@ -59,8 +59,8 @@ exports.login = async (req, res, next) => {
     console.log(retrieve);
     console.log('Checkoing log');
 
-    if (retrieve == undefined) {
-        req.flash('info', 'You are now logged in.');
+    if (retrieve == undefined || retrieve.length === 0 ) {
+        req.flash('info', 'Invalid username or password.');
         res.redirect('/admin');
       } else {
         req.session.name = retrieve[0].name;
