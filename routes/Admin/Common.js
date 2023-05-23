@@ -35,7 +35,7 @@ router.route("/logout").get(Common.logout);
 /**
  * Vendor
  */
-router.route("/vendor").post(Vendor.retrieve);
+//router.route("/vendor").post(Vendor.retrieve);
 
 router.get("/vendor/add", (req, res) => {
     res.render("admin/vendor/add", { title: "App" });
