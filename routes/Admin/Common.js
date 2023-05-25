@@ -37,9 +37,20 @@ router.route("/logout").get(Common.logout);
  */
 //router.route("/vendor").post(Vendor.retrieve);
 
-router.get("/vendor/add", (req, res) => {
+router.get("/vendor-add", (req, res) => {
     res.render("admin/vendor/add", { title: "App" });
 });
+
+router.route('/vendor/add').post(Vendor.add);
+
+/*
+app.post("/vendor/add", urlencodedParser, (req, res) => {
+    console.log('Got body:', req.body);
+    res.sendStatus(200);
+});
+*/
+
+
 
 
 router.route("/vendor/add").post(Vendor.insert);

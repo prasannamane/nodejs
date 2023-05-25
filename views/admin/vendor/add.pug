@@ -1,634 +1,83 @@
 doctype html
 html
-  head
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    title INSPINIA | Basic Form
-    link(href='../../css/bootstrap.min.css', rel='stylesheet')
-    link(href='../../font-awesome/css/font-awesome.css', rel='stylesheet')
-    link(href='../../css/plugins/iCheck/custom.css', rel='stylesheet')
-    link(href='../../css/animate.css', rel='stylesheet')
-    link(href='../../css/style.css', rel='stylesheet')
-    link(href='../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css', rel='stylesheet')
-  body
-    #wrapper
-      include ../template/nav.pug
-      #page-wrapper.gray-bg
-        .row.border-bottom
-          nav.navbar.navbar-static-top(role='navigation', style='margin-bottom: 0')
-            .navbar-header
-              a.navbar-minimalize.minimalize-styl-2.btn.btn-primary(href='#')
-                i.fa.fa-bars
-              form.navbar-form-custom(role='search', action='search_results.html')
-                .form-group
-                  input#top-search.form-control(type='text', placeholder='Search for something...', name='top-search')
-            ul.nav.navbar-top-links.navbar-right
-              li
-                span.m-r-sm.text-muted.welcome-message Welcome to INSPINIA+ Admin Theme.
-              li.dropdown
-                a.dropdown-toggle.count-info(data-toggle='dropdown', href='#')
-                  i.fa.fa-envelope
-                  span.label.label-warning 16
-                ul.dropdown-menu.dropdown-messages
-                  li
-                    .dropdown-messages-box
-                      a.dropdown-item.float-left(href='../../profile.html')
-                        img.rounded-circle(alt='image', src='../../img/a7.jpg')
-                      .media-body
-                        small.float-right 46h ago
-                        strong Mike Loreipsum
-                        |  started following 
-                        strong Monica Smith
-                        | . 
-                        br
-                        small.text-muted 3 days ago at 7:58 pm - 10.06.2014
-                  li.dropdown-divider
-                  li
-                    .dropdown-messages-box
-                      a.dropdown-item.float-left(href='../../profile.html')
-                        img.rounded-circle(alt='image', src='../../img/a4.jpg')
-                      .media-body
-                        small.float-right.text-navy 5h ago
-                        strong Chris Johnatan Overtunk
-                        |  started following 
-                        strong Monica Smith
-                        | . 
-                        br
-                        small.text-muted Yesterday 1:21 pm - 11.06.2014
-                  li.dropdown-divider
-                  li
-                    .dropdown-messages-box
-                      a.dropdown-item.float-left(href='../../profile.html')
-                        img.rounded-circle(alt='image', src='../../img/profile.jpg')
-                      .media-body
-                        small.float-right 23h ago
-                        strong Monica Smith
-                        |  love 
-                        strong Kim Smith
-                        | . 
-                        br
-                        small.text-muted 2 days ago at 2:30 am - 11.06.2014
-                  li.dropdown-divider
-                  li
-                    .text-center.link-block
-                      a.dropdown-item(href='../../mailbox.html')
-                        i.fa.fa-envelope
-                        |  
-                        strong Read All Messages
-              li.dropdown
-                a.dropdown-toggle.count-info(data-toggle='dropdown', href='#')
-                  i.fa.fa-bell
-                  span.label.label-primary 8
-                ul.dropdown-menu.dropdown-alerts
-                  li
-                    a.dropdown-item(href='../../mailbox.html')
-                      div
-                        i.fa.fa-envelope.fa-fw
-                        |  You have 16 messages
-                        span.float-right.text-muted.small 4 minutes ago
-                  li.dropdown-divider
-                  li
-                    a.dropdown-item(href='../../profile.html')
-                      div
-                        i.fa.fa-twitter.fa-fw
-                        |  3 New Followers
-                        span.float-right.text-muted.small 12 minutes ago
-                  li.dropdown-divider
-                  li
-                    a.dropdown-item(href='../../grid_options.html')
-                      div
-                        i.fa.fa-upload.fa-fw
-                        |  Server Rebooted
-                        span.float-right.text-muted.small 4 minutes ago
-                  li.dropdown-divider
-                  li
-                    .text-center.link-block
-                      a.dropdown-item(href='../../notifications.html')
-                        strong See All Alerts
-                        i.fa.fa-angle-right
-              li
-                a(href='../../login.html')
-                  i.fa.fa-sign-out
-                  |  Log out
-        .row.wrapper.border-bottom.white-bg.page-heading
-          .col-lg-10
-            h2 Basic Form
-            ol.breadcrumb
-              li.breadcrumb-item
-                a(href='../../index.html') Home
-              li.breadcrumb-item
-                a Forms
-              li.breadcrumb-item.active
-                strong Basic Form
-          .col-lg-2
-        .wrapper.wrapper-content.animated.fadeInRight
-          .row
-            .col-lg-7
-              .ibox
-                .ibox-title
-                  h5
-                    | Basic form 
-                    small Simple login form example
-                  .ibox-tools
-                    a.collapse-link
-                      i.fa.fa-chevron-up
-                    a.dropdown-toggle(data-toggle='dropdown', href='#')
-                      i.fa.fa-wrench
-                    ul.dropdown-menu.dropdown-user
-                      li
-                        a.dropdown-item(href='#') Config option 1
-                      li
-                        a.dropdown-item(href='#') Config option 2
-                    a.close-link
-                      i.fa.fa-times
-                .ibox-content
-                  .row
-                    .col-sm-6.b-r
-                      h3.m-t-none.m-b Sign in
-                      p Sign in today for more expirience.
-                      form(role='form')
-                        .form-group
-                          label Email
-                          |  
-                          input.form-control(type='email', placeholder='Enter email')
-                        .form-group
-                          label Password
-                          |  
-                          input.form-control(type='password', placeholder='Password')
-                        div
-                          button.btn.btn-sm.btn-primary.float-right.m-t-n-xs(type='submit')
-                            strong Log in
-                          label
-                            input.i-checks(type='checkbox')
-                            |  Remember me
-                    .col-sm-6
-                      h4 Not a member?
-                      p You can create an account:
-                      p.text-center
-                        a(href='')
-                          i.fa.fa-sign-in.big-icon
-            .col-lg-5
-              .ibox
-                .ibox-title
-                  h5 Horizontal form
-                  .ibox-tools
-                    a.collapse-link
-                      i.fa.fa-chevron-up
-                    a.dropdown-toggle(data-toggle='dropdown', href='#')
-                      i.fa.fa-wrench
-                    ul.dropdown-menu.dropdown-user
-                      li
-                        a.dropdown-item(href='#') Config option 1
-                      li
-                        a.dropdown-item(href='#') Config option 2
-                    a.close-link
-                      i.fa.fa-times
-                .ibox-content
-                  form
-                    p Sign in today for more expirience.
-                    .form-group.row
-                      label.col-lg-2.col-form-label Email
-                      .col-lg-10
-                        input.form-control(type='email', placeholder='Email')
-                        |  
-                        span.form-text.m-b-none Example block-level help text here.
-                    .form-group.row
-                      label.col-lg-2.col-form-label Password
-                      .col-lg-10
-                        input.form-control(type='password', placeholder='Password')
-                    .form-group.row
-                      .col-lg-offset-2.col-lg-10
-                        .i-checks
-                          label
-                            input(type='checkbox')
-                            i
-                            |  Remember me
-                    .form-group.row
-                      .col-lg-offset-2.col-lg-10
-                        button.btn.btn-sm.btn-white(type='submit') Sign in
-          .row
-            .col-lg-8
-              .ibox
-                .ibox-title
-                  h5 Inline form
-                  .ibox-tools
-                    a.collapse-link
-                      i.fa.fa-chevron-up
-                    a.dropdown-toggle(data-toggle='dropdown', href='#')
-                      i.fa.fa-wrench
-                    ul.dropdown-menu.dropdown-user
-                      li
-                        a.dropdown-item(href='#') Config option 1
-                      li
-                        a.dropdown-item(href='#') Config option 2
-                    a.close-link
-                      i.fa.fa-times
-                .ibox-content
-                  form.form-inline(role='form')
-                    .form-group
-                      label.sr-only(for='exampleInputEmail2') Email address
-                      input#exampleInputEmail2.form-control(type='email', placeholder='Enter email')
-                    .form-group
-                      label.sr-only(for='exampleInputPassword2') Password
-                      input#exampleInputPassword2.form-control(type='password', placeholder='Password')
-                    .checkbox.m-r-xs
-                      input#checkbox1(type='checkbox')
-                      label(for='checkbox1')
-                        | Remember me
-                    button.btn.btn-white(type='submit') Sign in
-            .col-lg-4
-              .ibox
-                .ibox-title
-                  h5
-                    | Modal form 
-                    small Example of login in modal box
-                  .ibox-tools
-                    a.collapse-link
-                      i.fa.fa-chevron-up
-                    a.dropdown-toggle(data-toggle='dropdown', href='#')
-                      i.fa.fa-wrench
-                    ul.dropdown-menu.dropdown-user
-                      li
-                        a.dropdown-item(href='#') Config option 1
-                      li
-                        a.dropdown-item(href='#') Config option 2
-                    a.close-link
-                      i.fa.fa-times
-                .ibox-content
-                  .text-center
-                    a.btn.btn-primary(data-toggle='modal', href='#modal-form') Form in simple modal box
-                  #modal-form.modal.fade(aria-hidden='true')
-                    .modal-dialog
-                      .modal-content
-                        .modal-body
-                          .row
-                            .col-sm-6.b-r
-                              h3.m-t-none.m-b Sign in
-                              p Sign in today for more expirience.
-                              form(role='form')
-                                .form-group
-                                  label Email
-                                  |  
-                                  input.form-control(type='email', placeholder='Enter email')
-                                .form-group
-                                  label Password
-                                  |  
-                                  input.form-control(type='password', placeholder='Password')
-                                div
-                                  button.btn.btn-sm.btn-primary.float-right.m-t-n-xs(type='submit')
-                                    strong Log in
-                                  label
-                                    input.i-checks(type='checkbox')
-                                    |  Remember me
-                            .col-sm-6
-                              h4 Not a member?
-                              p You can create an account:
-                              p.text-center
-                                a(href='')
-                                  i.fa.fa-sign-in.big-icon
-          .row
-            .col-lg-12
-              .ibox
-                .ibox-title
-                  h5
-                    | All form elements 
-                    small With custom checbox and radion elements.
-                  .ibox-tools
-                    a.collapse-link
-                      i.fa.fa-chevron-up
-                    a.dropdown-toggle(data-toggle='dropdown', href='#')
-                      i.fa.fa-wrench
-                    ul.dropdown-menu.dropdown-user
-                      li
-                        a.dropdown-item(href='#') Config option 1
-                      li
-                        a.dropdown-item(href='#') Config option 2
-                    a.close-link
-                      i.fa.fa-times
-                .ibox-content
-                  form(method='get')
-                    .form-group.row
-                      label.col-sm-2.col-form-label Normal
-                      .col-sm-10
-                        input.form-control(type='text')
-                    .hr-line-dashed
-                    .form-group.row
-                      label.col-sm-2.col-form-label Help text
-                      .col-sm-10
-                        input.form-control(type='text')
-                        |  
-                        span.form-text.m-b-none A block of help text that breaks onto a new line and may extend beyond one line.
-                    .hr-line-dashed
-                    .form-group.row
-                      label.col-sm-2.col-form-label Password
-                      .col-sm-10
-                        input.form-control(type='password', name='password')
-                    .hr-line-dashed
-                    .form-group.row
-                      label.col-sm-2.col-form-label Placeholder
-                      .col-sm-10
-                        input.form-control(type='text', placeholder='placeholder')
-                    .hr-line-dashed
-                    .form-group.row
-                      label.col-lg-2.col-form-label Disabled
-                      .col-lg-10
-                        input.form-control(type='text', disabled='', placeholder='Disabled input here...')
-                    .hr-line-dashed
-                    .form-group.row
-                      label.col-lg-2.col-form-label Static control
-                      .col-lg-10
-                        p.form-control-static email@example.com
-                    .hr-line-dashed
-                    .form-group.row
-                      label.col-sm-2.col-form-label
-                        | Checkboxes and radios 
-                        br
-                        small.text-navy Normal Bootstrap elements
-                      .col-sm-10
-                        div
-                          label
-                            input(type='checkbox', value='')
-                            |  Option one is this and that&mdash;be sure to include why it&apos;s great
-                        div
-                          label
-                            input#optionsRadios1(type='radio', checked='', value='option1', name='optionsRadios')
-                            |  Option one is this and that&mdash;be sure to
-                                          
-                        div
-                          label
-                            input#optionsRadios2(type='radio', value='option2', name='optionsRadios')
-                            |  Option two can be something else and selecting it will
-                    .hr-line-dashed
-                    .form-group.row
-                      label.col-sm-2.col-form-label Inline checkboxes
-                      .col-sm-10
-                        label
-                          input#inlineCheckbox1(type='checkbox', value='option1')
-                          |  a
-                        |  
-                        label.checkbox-inline
-                          input#inlineCheckbox2(type='checkbox', value='option2')
-                          |  b
-                        |  
-                        label
-                          input#inlineCheckbox3(type='checkbox', value='option3')
-                          |  c
-                    .hr-line-dashed
-                    .form-group.row
-                      label.col-sm-2.col-form-label
-                        | Checkboxes &amp; radios 
-                        br
-                        small.text-navy Custom elements
-                      .col-sm-10
-                        .i-checks
-                          label
-                            input(type='checkbox', value='')
-                            |  
-                            i
-                            |  Option one
-                        .i-checks
-                          label
-                            input(type='checkbox', value='', checked='')
-                            |  
-                            i
-                            |  Option two checked
-                        .i-checks
-                          label
-                            input(type='checkbox', value='', disabled='', checked='')
-                            |  
-                            i
-                            |  Option three checked and disabled
-                        .i-checks
-                          label
-                            input(type='checkbox', value='', disabled='')
-                            |  
-                            i
-                            |  Option four disabled
-                        .i-checks
-                          label
-                            input(type='radio', value='option1', name='a')
-                            |  
-                            i
-                            |  Option one
-                        .i-checks
-                          label
-                            input(type='radio', checked='', value='option2', name='a')
-                            |  
-                            i
-                            |  Option two checked
-                        .i-checks
-                          label
-                            input(type='radio', disabled='', checked='', value='option2')
-                            |  
-                            i
-                            |  Option three checked and disabled
-                        .i-checks
-                          label
-                            input(type='radio', disabled='', name='a')
-                            |  
-                            i
-                            |  Option four disabled
-                    .hr-line-dashed
-                    .form-group.row
-                      label.col-sm-2.col-form-label Inline checkboxes
-                      .col-sm-10
-                        label.checkbox-inline.i-checks
-                          input(type='checkbox', value='option1')
-                          | a
-                        label.i-checks
-                          input(type='checkbox', value='option2')
-                          |  b
-                        label.i-checks
-                          input(type='checkbox', value='option3')
-                          |  c
-                    .hr-line-dashed
-                    .form-group.row
-                      label.col-sm-2.col-form-label Select
-                      .col-sm-10
-                        select.form-control.m-b(name='account')
-                          option option 1
-                          option option 2
-                          option option 3
-                          option option 4
-                        .col-lg-4.m-l-n
-                          select.form-control(multiple='')
-                            option option 1
-                            option option 2
-                            option option 3
-                            option option 4
-                    .hr-line-dashed
-                    .form-group.row.has-success
-                      label.col-sm-2.col-form-label Input with success
-                      .col-sm-10
-                        input.form-control(type='text')
-                    .hr-line-dashed
-                    .form-group.row.has-warning
-                      label.col-sm-2.col-form-label Input with warning
-                      .col-sm-10
-                        input.form-control(type='text')
-                    .hr-line-dashed
-                    .form-group.row.has-error
-                      label.col-sm-2.col-form-label Input with error
-                      .col-sm-10
-                        input.form-control(type='text')
-                    .hr-line-dashed
-                    .form-group.row
-                      label.col-sm-2.col-form-label Control sizing
-                      .col-sm-10
-                        input.form-control.form-control-lg.m-b(type='text', placeholder='.form-control-lg')
-                        input.form-control.m-b(type='text', placeholder='Default input')
-                        |  
-                        input.form-control.form-control-sm(type='text', placeholder='.form-control-sm')
-                    .hr-line-dashed
-                    .form-group.row
-                      label.col-sm-2.col-form-label Column sizing
-                      .col-sm-10
-                        .row
-                          .col-md-2
-                            input.form-control(type='text', placeholder='.col-md-2')
-                          .col-md-3
-                            input.form-control(type='text', placeholder='.col-md-3')
-                          .col-md-4
-                            input.form-control(type='text', placeholder='.col-md-4')
-                    .hr-line-dashed
-                    .form-group.row
-                      label.col-sm-2.col-form-label Input groups
-                      .col-sm-10
-                        .input-group.m-b
-                          .input-group-prepend
-                            span.input-group-addon @
-                          input.form-control(type='text', placeholder='Username')
-                        .input-group.m-b
-                          input.form-control(type='text')
-                          .input-group-append
-                            span.input-group-addon .00
-                        .input-group.m-b
-                          .input-group-prepend
-                            span.input-group-addon $
-                          input.form-control(type='text')
-                          .input-group-append
-                            span.input-group-addon .00
-                        .input-group.m-b
-                          .input-group-prepend
-                            span.input-group-addon
-                              input(type='checkbox')
-                          input.form-control(type='text')
-                        .input-group.m-b
-                          .input-group-prepend
-                            span.input-group-addon
-                              input(type='radio')
-                          input.form-control(type='text')
-                    .hr-line-dashed
-                    .form-group.row
-                      label.col-sm-2.col-form-label Button addons
-                      .col-sm-10
-                        .input-group.m-b
-                          span.input-group-prepend
-                            button.btn.btn-primary(type='button') Go!
-                          |  
-                          input.form-control(type='text')
-                        .input-group
-                          input.form-control(type='text')
-                          |  
-                          span.input-group-append
-                            button.btn.btn-primary(type='button')
-                              | Go!
-                    .hr-line-dashed
-                    .form-group.row
-                      label.col-sm-2.col-form-label With dropdowns
-                      .col-sm-10
-                        .input-group.m-b
-                          .input-group-prepend
-                            button.btn.btn-white.dropdown-toggle(data-toggle='dropdown', type='button') Action 
-                            ul.dropdown-menu
-                              li
-                                a(href='#') Action
-                              li
-                                a(href='#') Another action
-                              li
-                                a(href='#') Something else here
-                              li.dropdown-divider
-                              li
-                                a(href='#') Separated link
-                          input.form-control(type='text')
-                        .input-group
-                          input.form-control(type='text')
-                          .input-group-append
-                            button.btn.btn-white.dropdown-toggle(data-toggle='dropdown', type='button') Action 
-                            ul.dropdown-menu.float-right
-                              li
-                                a(href='#') Action
-                              li
-                                a(href='#') Another action
-                              li
-                                a(href='#') Something else here
-                              li.dropdown-divider
-                              li
-                                a(href='#') Separated link
-                    .hr-line-dashed
-                    .form-group.row
-                      label.col-sm-2.col-form-label Segmented
-                      .col-sm-10
-                        .input-group.m-b
-                          .input-group-prepend
-                            button.btn.btn-white(tabindex='-1', type='button') Action
-                            button.btn.btn-white.dropdown-toggle(data-toggle='dropdown', type='button')
-                            ul.dropdown-menu
-                              li
-                                a(href='#') Action
-                              li
-                                a(href='#') Another action
-                              li
-                                a(href='#') Something else here
-                              li.dropdown-divider
-                              li
-                                a(href='#') Separated link
-                          input.form-control(type='text')
-                        .input-group
-                          input.form-control(type='text')
-                          .input-group-append
-                            button.btn.btn-white(tabindex='-1', type='button') Action
-                            button.btn.btn-white.dropdown-toggle(data-toggle='dropdown', type='button')
-                            ul.dropdown-menu.float-right
-                              li
-                                a(href='#') Action
-                              li
-                                a(href='#') Another action
-                              li
-                                a(href='#') Something else here
-                              li.dropdown-divider
-                              li
-                                a(href='#') Separated link
-                    .hr-line-dashed
-                    .form-group.row
-                      .col-sm-4.col-sm-offset-2
-                        button.btn.btn-white.btn-sm(type='submit') Cancel
-                        button.btn.btn-primary.btn-sm(type='submit') Save changes
-        .footer
-          .float-right
-            | 10GB of 
-            strong 250GB
-            |  Free.
-          div
-            strong Copyright
-            |  Example Company &copy; 2014-2018
-    
-    // Mainly scripts
-    script(src='../../js/popper.min.js')
-    script(src='../../js/bootstrap.js')
-    script(src='../../js/plugins/metisMenu/jquery.metisMenu.js')
-    script(src='../../js/plugins/slimscroll/jquery.slimscroll.min.js')
-    
-    // Custom and plugin javascript
-    script(src='../../js/inspinia.js')
-    script(src='../../js/plugins/pace/pace.min.js')
-    
-    // iCheck
-    script(src='../../js/plugins/iCheck/icheck.min.js')
-    script.
-      $(document).ready(function () {
-      $('.i-checks').iCheck({
-      checkboxClass: 'icheckbox_square-green',
-      radioClass: 'iradio_square-green',
-      });
-      });
+    include ../template/head.pug
+    body
+        #wrapper
+            include ../template/nav.pug
+            #page-wrapper.gray-bg
+                include ../template/searchbar.pug
+                include ../template/breadcrumbs.pug
+                .wrapper.wrapper-content.animated.fadeInRight
+                    .row
+                        .col-lg-12
+                            .ibox
+                                .ibox-title
+                                    h5
+                                        | All form elements #{message}
+                                        small With custom checbox and radion elements.
+                                    .ibox-tools
+                                        a.collapse-link
+                                            i.fa.fa-chevron-up
+                                        a.dropdown-toggle(data-toggle='dropdown' href='#')
+                                            i.fa.fa-wrench
+                                        ul.dropdown-menu.dropdown-user
+                                            li
+                                                a.dropdown-item(href='#') Config option 1
+                                            li
+                                                a.dropdown-item(href='#') Config option 2
+                                        a.close-link
+                                            i.fa.fa-times
+                                .ibox-content
+                                    form(method='post' action='/admin/vendor/add')
+                                        .form-group.row
+                                            label.col-sm-2.col-form-label First Name
+                                            .col-sm-10
+                                                input.form-control(type='text', name='fname')
+                                        .hr-line-dashed
+                                        .form-group.row
+                                            label.col-sm-2.col-form-label Last Name
+                                            .col-sm-10
+                                                input.form-control(type='text', name='lname')
+                                        .hr-line-dashed
+                                        .form-group.row
+                                            label.col-sm-2.col-form-label Email ID
+                                            .col-sm-10
+                                                input.form-control(type='email', name='email')
+                                        .hr-line-dashed
+                                        .form-group.row
+                                            label.col-sm-2.col-form-label Mobile Number
+                                            .col-sm-10
+                                                input.form-control(type='number', name='mobile')
+                                        .hr-line-dashed
+                                        .form-group.row
+                                            .col-sm-4.col-sm-offset-2
+                                                button.btn.btn-white.btn-sm(type='submit') Cancel
+                                                button.btn.btn-primary.btn-sm(type='submit') Save changes
+                .footer
+                    .float-right
+                        | 10GB of 
+                        strong 250GB
+                        |  Free.
+                    div
+                        strong Copyright
+                        |  Example Company &copy; 2014-2018
+
+        // Mainly scripts
+        script(src='../../js/popper.min.js')
+        script(src='../../js/bootstrap.js')
+        script(src='../../js/plugins/metisMenu/jquery.metisMenu.js')
+        script(src='../../js/plugins/slimscroll/jquery.slimscroll.min.js')
+
+        // Custom and plugin javascript
+        script(src='../../js/inspinia.js')
+        script(src='../../js/plugins/pace/pace.min.js')
+
+        // iCheck
+        script(src='../../js/plugins/iCheck/icheck.min.js')
+        script.
+            $(document).ready(function () {
+            $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+            });
+            });

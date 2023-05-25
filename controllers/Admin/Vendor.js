@@ -18,6 +18,16 @@ class Vendor {
         return this.ObjCommon.insert(this.table, data);
     }
 
+    async insert(req) {
+        const data = [];
+        data["name"] = req.body.fname+' '+req.body.lname;
+        data["email"] = req.body.email;
+        data["mobile"] = req.body.mobile;
+        data["password"] = crypto.createHash("sha1").update(req.body.mobile).digest("hex");
+        this.table = "register";
+        return this.ObjCommon.insert(this.table, data);
+    }
+
 }
 
 const ObjVendor = new Vendor();
@@ -33,5 +43,17 @@ exports.insert = async (req, res, next) => {
     } else {
         req.flash("info", "You are now logged in.");
         res.redirect("/admin/dashboard");
+    }
+};
+
+exports.add = async (req, res, next) => {
+    const add = await ObjVendor.insert(req);
+
+    console.log(add);
+    
+    if (add == undefined || add.length === 0) {
+        res.render("admin/vendor/add", { message: "Something went wrong." });
+    } else {
+        res.render("admin/vendor/add", { message: "Vendor added successfully." });
     }
 };
