@@ -6,14 +6,15 @@ const common = require('../Models/CommonModel');
 const Joi = require('joi');
 
 class UserController {
-    async subscribe(req, common) {
-            return new common({
+    async subscribe(req) {
+        const user = new common({
                 name: req.body.name, 
                 email: req.body.email,
                 author: 'Prasanna',
                 tags: ['node', 'backend'], 
                 isPublished: true
             });
+            return user;
     }
 
     async get_all(common) {
@@ -110,11 +111,10 @@ exports.see = async (req, res, next) => {
 };
 
 function validateInput(req) {
-    const schema = {
+    const schema = Joi.object({
         email: Joi.string().min(5).required(),
         name: Joi.string(),
-    }
-    /* npm install joi@13.1.0
-    */
-    return Joi.validate(req.body, schema);
+    });
+
+    return schema.validate(req.body);
 }

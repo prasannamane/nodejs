@@ -13,13 +13,25 @@ class AdminModel {
         this.query;
     }
 
-    async retrieve(table, condition){
+    async retrieve(table, condition) {
         try {
+            if (!table || typeof table !== 'string') {
+                throw new Error('Invalid table name provided.');
+            }
+            if (!condition || typeof condition !== 'object') {
+                throw new Error('Invalid condition provided. Expected an object.');
+            }
+
             this.query = this.sqlSelect.from(table).where(condition).build();
-            return await this.ObjDatabase.query(this.query);
+            console.log('Executing query:', this.query);
+
+            const result = await this.ObjDatabase.query(this.query);
+            return result;
         } catch (error) {
-            console.error("Second Error " + error);
-        } 
+            console.error('Error in retrieve method:', error.message);
+            console.error('Stack Trace:', error.stack);
+            throw new Error(`Failed to retrieve data from table ${table}: ${error.message}`);
+        }
 
     }
 
@@ -38,8 +50,8 @@ class AdminModel {
         console.log('Loading model');
         try {
             const ObjDatabase = await new Database();
-            
-            return await  ObjDatabase.query('SELECT * FROM `category`');
+
+            return await ObjDatabase.query('SELECT * FROM `category`');
             /*.then((result) => {
                 
                 //console.log(result);
@@ -56,10 +68,10 @@ class AdminModel {
                 //console.error("First Error " + err);
               });*/
 
-              //console.log("Rows "+rows);
+            //console.log("Rows "+rows);
         } catch (error) {
             console.error("Second Error " + error);
-        } 
+        }
     }
 }
 

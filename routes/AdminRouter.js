@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
     res.render('admin/login', {title: 'App', message:'Welcome'});
 });
 */
-console.log('1. Route');
+console.log('1. Admin Route ');
 
 router.route('/see').get(AdminController.see);
 

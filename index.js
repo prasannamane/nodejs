@@ -36,7 +36,7 @@ app.set('views', './views');
 if (app.get('env') == 'development') app.use(morgan('tiny'));
 
 app.get('/', (req, res) => {
-    res.render('index', { title: 'App', message: 'Welcome' });
+    res.render('index', { title: 'App', message: 'HomePage' });
 });
 
 //app.use('/setup', setupRoutes)
