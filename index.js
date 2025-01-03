@@ -4,11 +4,21 @@ const bodyParser = require('body-parser');
 //const config = require('./config');
 const express = require('express');
 const session = require('express-session');
+const helmet = require('helmet');
+const csrf = require('csurf');
 
 //const setupRoutes = require('./routes/SetupRoutes');
 const userRoutes = require('./routes/UserRouter');
 const adminRoutes = require('./routes/AdminRouter');
+const apiRoutes = require('./routes/Api');
 const app = express();
+
+app.use(helmet());
+
+
+  
+
+
 const morgan = require('morgan');
 const flash = require('express-flash');
 
@@ -42,7 +52,7 @@ app.get('/', (req, res) => {
 //app.use('/setup', setupRoutes)
 app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);
-
+app.use('/api', apiRoutes);
 
 
 const port = process.env.PORT || 8006;
