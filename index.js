@@ -11,14 +11,11 @@ const csrf = require('csurf');
 const userRoutes = require('./routes/UserRouter');
 const adminRoutes = require('./routes/AdminRouter');
 const apiRoutes = require('./routes/Api');
+const cors = require('cors');
 const app = express();
 
 app.use(helmet());
-
-
-  
-
-
+app.use(cors());
 const morgan = require('morgan');
 const flash = require('express-flash');
 

@@ -49,7 +49,7 @@ exports.list = async (req, res, next) => {
         res.json({
             status: 'success',
             message: 'Data retrieved successfully',
-            data: list,
+            userlist: list,
 
         });
     } catch (error) {
