@@ -20,8 +20,8 @@ class ApiController {
         return this.ObjModelsAdminCommon.retrieve(this.table, condition);
     }
 
-    login() {
-        return true;
+    login(table, fetch_data) {
+        return this.ObjModelsAdminCommon.login(table, fetch_data);
     }
 
     async insert(table, insert_data) {
@@ -66,17 +66,11 @@ exports.register = async (req, res, next) => {
     var insert_data= [];
     insert_data['mobile'] = req.body.mobile;
     insert_data['password'] = req.body.password;
-   /* const { mobile, password } = req.body;
-
-    if (!mobile || !password) {
-        return res.status(400).json({
-            status: 'error',
-            message: 'Mobile and Password are required'
-        });
-    }
-
-    const insert_data = { mobile, password };
-*/
+    insert_data['email'] = req.body.email;
+    insert_data['username'] = req.body.username;
+    insert_data['first_name'] = req.body.first_name;
+    insert_data['last_name'] = req.body.last_name;
+    insert_data['python_id'] = req.body.python_id;
     try {
         const result = await ObjApiController.insert('register', insert_data);
         const list = await ObjApiController.list();
@@ -85,12 +79,14 @@ exports.register = async (req, res, next) => {
         res.json({
             status: 'success',
             message: 'Registration successful',
-            insertedId: result.id,
+            error: 0,
+            insertedId: result.insertId,
             data: list
         });
 
     } catch (error) {
         console.error('Error in registration:', error);
+        console.log("error",error)
 
         if (error.code === 'ER_DUP_ENTRY') {
             return res.status(409).json({
@@ -108,6 +104,31 @@ exports.register = async (req, res, next) => {
     }
 };
 
+exports.signin = async (req, res, next) => {
+    var fetch_data= [];
+    fetch_data['mobile'] = req.body.mobile;
+    fetch_data['password'] = req.body.password;
+    try {
+        const result = await ObjApiController.login('register', fetch_data);
+        res.json({
+            status: 'success',
+            message: 'Sign in successful',
+            user: result
+        });
+    }catch (error) {
+        console.error('Error in signin:', error);
+        console.log("error",error)
+
+
+            return res.status(409).json({
+                status: 'error',
+                message: 'User with this mobile not exists',
+                error: error.message
+            });
+        
+
+    }
+}
 
 
 exports.login = async (req, res, next) => {

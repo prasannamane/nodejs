@@ -23,7 +23,7 @@ class Database {
             this.connection.query(sql, args, (err, rows) => {
                 if (err) {
                     console.error('Query Error:', err.message, '\nSQL:', sql);
-                    return reject(new Error('Database query failed.'));
+                    return reject(new Error(err.message));
                 }
                 console.log('Query Result:', rows);
                 resolve(rows);
