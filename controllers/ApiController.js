@@ -36,6 +36,13 @@ class ApiController {
         return this.ObjModelsAdminCommon.list()
     }
 
+    async generateRandomString(length) {
+        const bytes = crypto.randomBytes(Math.ceil(length / 2));
+        let randomstring = bytes.toString('base64');
+        randomstring = randomstring.replace(/[^A-Za-z0-9]/g, '');
+        randomstring = randomstring.slice(0, length).padEnd(length, '0');
+        return randomstring;
+    }    
 
 }
 
@@ -63,7 +70,7 @@ exports.list = async (req, res, next) => {
 };
 
 exports.register = async (req, res, next) => {
-    var insert_data= [];
+    var insert_data = [];
     insert_data['mobile'] = req.body.mobile;
     insert_data['password'] = req.body.password;
     insert_data['email'] = req.body.email;
@@ -86,7 +93,7 @@ exports.register = async (req, res, next) => {
 
     } catch (error) {
         console.error('Error in registration:', error);
-        console.log("error",error)
+        console.log("error", error)
 
         if (error.code === 'ER_DUP_ENTRY') {
             return res.status(409).json({
@@ -105,27 +112,30 @@ exports.register = async (req, res, next) => {
 };
 
 exports.signin = async (req, res, next) => {
-    var fetch_data= [];
+    var insert_data = [];
+    var fetch_data = [];
     fetch_data['mobile'] = req.body.mobile;
     fetch_data['password'] = req.body.password;
     try {
         const result = await ObjApiController.login('register', fetch_data);
+        insert_data['register_id'] = result[0]?.id ?? null;
+        insert_data['token'] = await ObjApiController.generateRandomString(16);
+        await ObjApiController.insert('login', insert_data);
         res.json({
             status: 'success',
             message: 'Sign in successful',
+            login_token: insert_data['token'],
             user: result
         });
-    }catch (error) {
+    } catch (error) {
         console.error('Error in signin:', error);
-        console.log("error",error)
+        console.log("error", error)
+        return res.status(409).json({
+            status: 'error',
+            message: 'User with this mobile not exists',
+            error: error.message
+        });
 
-
-            return res.status(409).json({
-                status: 'error',
-                message: 'User with this mobile not exists',
-                error: error.message
-            });
-        
 
     }
 }
